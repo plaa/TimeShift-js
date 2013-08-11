@@ -18,11 +18,11 @@ TimeShift.setTimezoneOffset(-60);           // Set timezone to GMT+0100 (note th
 new Date().toString();
 "Fri Aug 09 2013 21:37:44 GMT+0100"
 
-TimeShift.setTime(1328230923000);           // Set the time to 2012-02-03 01:02:03 GMT (millisecond timestamp)
+TimeShift.setTime(1328230923000);           // Set the time to 2012-02-03 01:02:03 GMT
 new Date().toString();
 "Fri Feb 03 2012 02:02:03 GMT+0100"
 
-TimeShift.setTimezoneOffset(0);             // Set timezone to GMT (affects also existing instances)
+TimeShift.setTimezoneOffset(0);             // Set timezone to GMT
 new Date().toString();
 "Fri Feb 03 2012 01:02:03 GMT"
 
@@ -60,7 +60,7 @@ new Date(1356991200000).toString();
 "Tue Jan 01 2013 01:00:00 GMT+0300"
 ```
 
-The default time zone offset is the current local time zone offset.  Note that this can change depending on local DST.
+The default time zone offset is the current local time zone offset.  Note that this can change depending on local DST.  Setting the time zone offset affects also previously created Date instances.
 
 The time zone offset has the same sign as [Date.getTimezoneOffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset).  For example, -120 is GMT+0200 and +120 is GMT-0200.
 
