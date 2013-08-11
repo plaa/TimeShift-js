@@ -78,3 +78,10 @@ The mock implementation of Date is not perfect.
 * DST changes cannot be emulated.  The time zone offset it always fixed.
 
 If you'd like to fix some of these issues, please fork the repository, implement the desired functionality, add unit tests to `tests.js` and send a pull request.
+
+License
+-------
+
+TimeShift.js is Copyright 2013 Mobile Wellness Solutions MWS Ltd and Sampo Niskanen.
+
+It is released under the MIT license.
