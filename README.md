@@ -63,3 +63,18 @@ new Date(1356991200000).toString();
 The default time zone offset is the current local time zone offset.  Note that this can change depending on local DST.
 
 The time zone offset has the same sign as [Date.getTimezoneOffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset).  For example, -120 is GMT+0200 and +120 is GMT-0200.
+
+Caveats
+-------
+
+The mock implementation of Date is not perfect.
+
+* Many string-generation methods are incomplete and return something indicative, but not fully correct.  In particular `toDateString`, `toLocaleDateString`, `toLocaleString`, `toLocaleTimeString`, `toTimeString` produce somewhat incorrect results.
+
+* The `toString` method does not contain any time zone name.
+
+* The `parse` method delegates directly to the original method and might not handle time zones correctly.
+
+* DST changes cannot be emulated.  The time zone offset it always fixed.
+
+If you'd like to fix some of these issues, please fork the repository, implement the desired functionality, add unit tests to `tests.js` and send a pull request.
