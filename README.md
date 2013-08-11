@@ -42,3 +42,24 @@ new TimeShift.OriginalDate().toString();    // Use original Date object
 "Fri Aug 09 2013 23:37:47 GMT+0300 (EEST)"
 ```
 
+Time zones
+----------
+
+TimeShift.js always utilizes its internal time zone offset when converting between local time and UTC.  The offset factor is fixed, and it does not take into account DST changes.  Effectively it emulates a time zone with no DST.
+
+```javascript
+new Date(1370034000000).toString();         // Original Date object uses variable offset
+"Sat Jun 01 2013 00:00:00 GMT+0300 (EEST)"
+new Date(1356991200000).toString();
+"Tue Jan 01 2013 00:00:00 GMT+0200 (EET)"
+
+Date = TimeShift.Date;                      // TimeShift.js uses fixed offset
+new Date(1370034000000).toString();
+"Sat Jun 01 2013 00:00:00 GMT+0300"
+new Date(1356991200000).toString();
+"Tue Jan 01 2013 01:00:00 GMT+0300"
+```
+
+The default time zone offset is the current local time zone offset.  Note that this can change depending on local DST.
+
+The time zone offset has the same sign as [Date.getTimezoneOffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset).  For example, -120 is GMT+0200 and +120 is GMT-0200.
