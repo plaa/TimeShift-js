@@ -73,9 +73,12 @@ The mock implementation of Date is not perfect.
 
 * The `toString` method does not contain any time zone name.
 
-* The `parse` method delegates directly to the original method and might not handle time zones correctly.
+* The `parse` method delegates directly to the original method and may not handle time zones correctly.
 
 * DST changes cannot be emulated.  The time zone offset it always fixed.
+
+* If a library or other code holds an original Date object or a reference to the Date prototype, things may break (e.g. error messages like "this is not a Date object").  In this case you should overwrite the Date object before loading the library.
+
 
 If you'd like to fix some of these issues, please fork the repository, implement the desired functionality, add unit tests to `tests.js` and send a pull request.
 
