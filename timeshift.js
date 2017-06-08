@@ -1,5 +1,5 @@
 /*!
- * TimeShift.js version 20130811
+ * TimeShift.js
  *
  * Copyright 2013 Mobile Wellness Solutions MWS Ltd, Sampo Juustila
  * Released under the MIT license
