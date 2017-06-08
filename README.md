@@ -85,6 +85,6 @@ If you'd like to fix some of these issues, please fork the repository, implement
 License
 -------
 
-TimeShift.js is Copyright 2013 Mobile Wellness Solutions MWS Ltd and Sampo Niskanen.
+TimeShift.js is Copyright 2013 Mobile Wellness Solutions MWS Ltd and Sampo Juustila.
 
 It is released under the MIT license.

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Time and timezone mocking / overriding",
   "homepage": "https://github.com/plaa/TimeShift-js",
-  "author": "Sampo Niskanen <sampo.niskanen@iki.fi>",
+  "author": "Sampo Juustila <sampo.juustila@iki.fi>",
   "main": "timeshift.js",
   "license": "MIT",
   "repository": {

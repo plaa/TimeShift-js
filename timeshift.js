@@ -1,7 +1,7 @@
 /*!
  * TimeShift.js version 20130811
  *
- * Copyright 2013 Mobile Wellness Solutions MWS Ltd, Sampo Niskanen
+ * Copyright 2013 Mobile Wellness Solutions MWS Ltd, Sampo Juustila
  * Released under the MIT license
  */
 
