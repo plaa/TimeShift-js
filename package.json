@@ -1,6 +1,6 @@
 {
   "name": "timeshift-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Time and timezone mocking / overriding",
   "homepage": "https://github.com/plaa/TimeShift-js",
   "author": "Sampo Juustila <sampo.juustila@iki.fi>",
