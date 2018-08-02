@@ -5,6 +5,7 @@
   "homepage": "https://github.com/plaa/TimeShift-js",
   "author": "Sampo Juustila <sampo.juustila@iki.fi>",
   "main": "timeshift.js",
+  "typings": "timeshift.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
