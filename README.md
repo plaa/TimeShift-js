@@ -1,6 +1,8 @@
 TimeShift.js
 ============
 
+[![npm](https://img.shields.io/npm/v/timeshift-js.svg)](https://www.npmjs.com/package/timeshift-js)
+
 TimeShift.js allows mocking / overriding JavaScript's Date object so that you can set the current time and timezone.  It is meant for creating repeatable tests that utilize the current time or date.
 
 Usage
