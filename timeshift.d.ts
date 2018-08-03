@@ -25,9 +25,9 @@ export function getTimezoneOffset(): number;
 /**
  * Access to the Mocked Date.
  */
-export const Date: Date;
+export const Date: DateConstructor;
 
 /**
  * Access to the original Date constructor.
  */
-export const OriginalDate: Date;
+export const OriginalDate: DateConstructor;
