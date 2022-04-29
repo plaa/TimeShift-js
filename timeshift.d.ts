@@ -1,8 +1,11 @@
+export type TimeCallback = () => number;
+
 /**
- * Set the current time in milliseconds after Jan 1 1970 in UTC time.  Setting this
- * to undefined will reset to the real current time.
+ * Set the current time in milliseconds after Jan 1 1970 in UTC time or a callback which
+ * returns the time in this format. Setting this to undefined will reset to the real 
+ * current time.
  */
-export function setTime(millis: number | undefined): void;
+export function setTime(millis: number | TimeCallback | undefined): void;
 
 /**
  * @return the currently overridden time value as milliseconds after Jan 1 1970 in UTC time.

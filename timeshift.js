@@ -22,8 +22,9 @@
 	var timezoneOffset = new OriginalDate().getTimezoneOffset();
 	
 	function currentDate() {
-		if (currentTime) {
-			return new OriginalDate(currentTime);
+		var time = TimeShift.getTime();
+		if (time) {
+			return new OriginalDate(time);
 		} else {
 			return new OriginalDate();
 		}
@@ -77,10 +78,14 @@
 	}
 	
 	/**
-	 * Return the currently overridden time value as milliseconds after Jan 1 1970 in UTC time.
-	 * The default value is undefined, which indicates using the real current time.
+	 * Return the currently overridden time value as milliseconds after Jan 1 1970 in UTC time
+	 * or a callback which returns the time in this format. The default value is undefined, which
+	 * indicates using the real current time.
 	 */
 	TimeShift.getTime = function() {
+		if (typeof currentTime === 'function') {
+			return currentTime();
+		}
 		return currentTime;
 	}
 
