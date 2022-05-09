@@ -499,6 +499,12 @@ test("toString() 3", function() {
   equal(d.toString(), "Sun Jan 01 2012 06:07:08 GMT");
 });
 
+test("toString(); invalid date", function() {
+  TimeShift.setTimezoneOffset(0);
+  var d = new TimeShift.Date("");
+  equal(d.toString(), "Invalid Date");
+});
+
 test("toUTCString()", function() {
   TimeShift.setTimezoneOffset(-300);
   var d = new TimeShift.Date(2012, MAR, 5, 23, 45, 12, 123);  // Mon 2012-03-05 23:45:12.123 +0500
