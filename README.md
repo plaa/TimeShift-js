@@ -24,24 +24,24 @@ TimeShift.setTime(1328230923000);           // Set the time to 2012-02-03 01:02:
 new Date().toString();
 "Fri Feb 03 2012 02:02:03 GMT+0100"
 
+TimeShift.setTimezoneOffset(0);             // Set timezone to GMT
+new Date().toString();
+"Fri Feb 03 2012 01:02:03 GMT"
+
+TimeShift.getTime();                        // Get overridden values
+1328230923000
+TimeShift.getTimezoneOffset();
+0
+
 var t = 1577836800000;
 TimeShift.setTime(() => {                   // Set the time using a callback that's evaluated each time a new Date is created
     t += 1000;
     return t;
 });
 new Date().toString();
-"Wed Jan 01 2020 01:00:01 GMT+0100"
+"Wed Jan 01 2020 00:00:01 GMT"
 new Date().toString();
-"Wed Jan 01 2020 01:00:02 GMT+0100"
-
-TimeShift.setTimezoneOffset(0);             // Set timezone to GMT
-new Date().toString();
-"Wed Jan 01 2020 00:00:03 GMT"
-
-TimeShift.getTime();                        // Get overridden values (function evaluated)
-1577836804000
-TimeShift.getTimezoneOffset();
-0
+"Wed Jan 01 2020 00:00:02 GMT"
 
 TimeShift.setTime(undefined);               // Reset to current time
 new Date().toString();
