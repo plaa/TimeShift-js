@@ -423,6 +423,28 @@ test("setTime(time)", function() {
   matchesUTC(d, 2013, AUG, 8, 19, 53, 04, 123, THU);
 });
 
+test("setTime(callback)", function() {
+  var callback = function() {
+    return 1375991584123;  // Thu 2013-08-08 19:53:04.123 UTC
+  }
+  TimeShift.setTimezoneOffset(-120);
+  TimeShift.setTime(callback);
+  var d = new TimeShift.Date();
+  matches(d, 2013, AUG, 8, 21, 53, 4, 123, THU);
+  matchesUTC(d, 2013, AUG, 8, 19, 53, 4, 123, THU);
+  TimeShift.setTime(undefined);
+});
+
+test("setTime(callback-undefined)", function() {
+  var callback = function() {
+    return undefined;
+  }
+  TimeShift.setTimezoneOffset(-120);
+  TimeShift.setTime(callback);
+  var now = new Date();
+  var d = new TimeShift.Date();
+  ok(now.getTime() - d.getTime() < 500);
+});
 
 ////////////////////  Other functionality  ////////////////////
 

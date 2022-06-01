@@ -33,6 +33,16 @@ TimeShift.getTime();                        // Get overridden values
 TimeShift.getTimezoneOffset();
 0
 
+var t = 1577836800000;
+TimeShift.setTime(() => {                   // Set the time using a callback that's evaluated each time a new Date is created
+    t += 1000;
+    return t;
+});
+new Date().toString();
+"Wed Jan 01 2020 00:00:01 GMT"
+new Date().toString();
+"Wed Jan 01 2020 00:00:02 GMT"
+
 TimeShift.setTime(undefined);               // Reset to current time
 new Date().toString();
 "Fri Aug 09 2013 20:37:45 GMT"
@@ -66,6 +76,29 @@ The default time zone offset is the current local time zone offset.  Note that t
 
 The time zone offset has the same sign as [Date.getTimezoneOffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset).  For example, -120 is GMT+0200 and +120 is GMT-0200.
 
+Mocking Passage of Time
+-----------------------
+Once the time is set, the same time will be returned every time you create a new Date object by default. It will not progress with the passage of time. Most of the time this is the desired behavior, but sometimes this can cause issues with things like canvas animations. If you want to maintain the normal passage of time starting with the date you set you can do so as follows:
+
+```javascript
+Date = TimeShift.Date;                                        // Override the Date object as usual
+var originalDate = new TimeShift.OriginalDate().getTime();    // Get the actual date before setting
+var mockTimestamp = 1577836800000;
+
+// Pass a callback to setTime that adds the change in time since the date was mocked to the the mocked time.
+TimeShift.setTime(() => {
+    var dateNow = new TimeShift.OriginalDate().getTime();
+    return mockTimestamp + dateNow - originalDate;
+});
+
+new Date().toString()
+"Wed Jan 01 2020 00:00:01 GMT"
+new Date().toString()
+"Wed Jan 01 2020 00:00:02 GMT"
+new Date().toString()
+"Wed Jan 01 2020 00:00:03 GMT"
+```
+
 Caveats
 -------
 
@@ -80,7 +113,6 @@ The mock implementation of Date is not perfect.
 * DST changes cannot be emulated.  The time zone offset it always fixed.
 
 * If a library or other code holds an original Date object or a reference to the Date prototype, things may break (e.g. error messages like "this is not a Date object").  In this case you should overwrite the Date object before loading the library.
-
 
 If you'd like to fix some of these issues, please fork the repository, implement the desired functionality, add unit tests to `tests.js` and send a pull request.
 
