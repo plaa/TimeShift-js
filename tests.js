@@ -435,6 +435,17 @@ test("setTime(callback)", function() {
   TimeShift.setTime(undefined);
 });
 
+test("setTime(callback-undefined)", function() {
+  var callback = function() {
+    return undefined;
+  }
+  TimeShift.setTimezoneOffset(-120);
+  TimeShift.setTime(callback);
+  var now = new Date();
+  var d = new TimeShift.Date();
+  ok(now.getTime() - d.getTime() < 500);
+});
+
 ////////////////////  Other functionality  ////////////////////
 
 test("getTime(), valueOf()", function() {

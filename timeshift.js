@@ -23,7 +23,10 @@
 	
 	function currentDate() {
 		var time = TimeShift.getTime();
-		if (time) {
+		if (typeof time === 'function') {
+			time = time();
+		}
+		if (time !== undefined) {
 			return new OriginalDate(time);
 		} else {
 			return new OriginalDate();
@@ -78,20 +81,16 @@
 	}
 	
 	/**
-	 * Return the currently overridden time value as milliseconds after Jan 1 1970 in UTC time
-	 * or a callback which returns the time in this format. The default value is undefined, which
-	 * indicates using the real current time.
+	 * Return the currently overridden time value set by `TimeShift.setTime`, or undefined if
+	 * not overridden.
 	 */
 	TimeShift.getTime = function() {
-		if (typeof currentTime === 'function') {
-			return currentTime();
-		}
 		return currentTime;
 	}
 
 	/**
-	 * Set the current time in milliseconds after Jan 1 1970 in UTC time.  Setting this
-	 * to undefined will reset to the real current time.
+	 * Set the current time in milliseconds after Jan 1 1970 in UTC time, or a callback
+	 * which returns the same.  Setting this to undefined will reset to the real current time.
 	 */
 	TimeShift.setTime = function(time) {
 		currentTime = time;
