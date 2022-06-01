@@ -200,6 +200,12 @@
 		var wkdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		var d = utcToLocal(this.utc);
+
+		// Match browser behavior for invalid dates
+		if (d.toString() === "Invalid Date") {
+			return d.toString();
+		}
+
 		// Mon Mar 05 2012 06:07:08 GMT+0500
 		return wkdays[d.getUTCDay()] + " " + months[d.getUTCMonth()] + " " + twoDigit(d.getUTCDate()) + " " + d.getUTCFullYear() +
 			" " + twoDigit(d.getUTCHours()) + ":" + twoDigit(d.getUTCMinutes()) + ":" + twoDigit(d.getUTCSeconds()) + " " + timezoneName();
