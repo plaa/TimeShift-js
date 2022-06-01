@@ -24,18 +24,22 @@ TimeShift.setTime(1328230923000);           // Set the time to 2012-02-03 01:02:
 new Date().toString();
 "Fri Feb 03 2012 02:02:03 GMT+0100"
 
+var t = 1577836800000;
 TimeShift.setTime(() => {                   // Set the time using a callback that's evaluated each time a new Date is created
-    return 1328230923000;
+    t += 1000;
+    return t;
 });
 new Date().toString();
-"Fri Feb 03 2012 02:02:03 GMT+0100"
+"Wed Jan 01 2020 01:00:01 GMT+0100"
+new Date().toString();
+"Wed Jan 01 2020 01:00:02 GMT+0100"
 
 TimeShift.setTimezoneOffset(0);             // Set timezone to GMT
 new Date().toString();
-"Fri Feb 03 2012 01:02:03 GMT"
+"Wed Jan 01 2020 00:00:03 GMT"
 
-TimeShift.getTime();                        // Get overridden values
-1328230923000
+TimeShift.getTime();                        // Get overridden values (function evaluated)
+1577836804000
 TimeShift.getTimezoneOffset();
 0
 
@@ -79,13 +83,20 @@ Once the time is set, the same time will be returned every time you create a new
 ```javascript
 Date = TimeShift.Date;                                        // Override the Date object as usual
 var originalDate = new TimeShift.OriginalDate().getTime();    // Get the actual date before setting
-var mockTimestamp = 1328230923000;
+var mockTimestamp = 1577836800000;
 
 // Pass a callback to setTime that adds the change in time since the date was mocked to the the mocked time.
 TimeShift.setTime(() => {
     var dateNow = new TimeShift.OriginalDate().getTime();
     return mockTimestamp + dateNow - originalDate;
 });
+
+new Date().toString()
+"Wed Jan 01 2020 00:00:01 GMT"
+new Date().toString()
+"Wed Jan 01 2020 00:00:02 GMT"
+new Date().toString()
+"Wed Jan 01 2020 00:00:03 GMT"
 ```
 
 Caveats
