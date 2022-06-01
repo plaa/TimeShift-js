@@ -503,6 +503,8 @@ test("toString(); invalid date", function() {
   TimeShift.setTimezoneOffset(0);
   var d = new TimeShift.Date("");
   equal(d.toString(), "Invalid Date");
+  d = new TimeShift.Date(NaN);
+  equal(d.toString(), 'Invalid Date');
 });
 
 test("toUTCString()", function() {
